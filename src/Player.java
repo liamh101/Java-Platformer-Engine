@@ -429,7 +429,7 @@ public class Player {
 	 */
 	public void shoot(){
 		if(readyToFire){
-			Projectile p = new Projectile(centerX + 0, centerY -25);
+			Projectile p = new Projectile(centerX + 0, centerY -25, 0);
 			p.setEnemy(false);
 			projectiles.add(p);
 		}

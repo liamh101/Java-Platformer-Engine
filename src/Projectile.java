@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 
 public class Projectile {
 
-	private int x, y, speedX,limit; 
+	private int x, y, speedX,limit, direction; 
 	private boolean visible, enemy;
 	private Rectangle hitbox; 
 	
@@ -22,9 +22,11 @@ public class Projectile {
 		hitbox = new Rectangle(0, 0, 0, 0);
 	}
 	
-	public Projectile(int startX, int startY){
+	public Projectile(int startX, int startY, int direction){
 		x = startX;
 		y = startY;
+		// 0= forward 1= behind 2= bellow 
+		this.direction = direction;
 		speedX = 7; 
 		limit = 800;
 		visible = true;
@@ -32,9 +34,11 @@ public class Projectile {
 		hitbox = new Rectangle(0, 0, 0, 0);
 	}
 	
-	public Projectile(int startX, int startY, int speedX, int limit){
+	public Projectile(int startX, int startY, int direction, int speedX, int limit){
 		x = startX;
 		y = startY; 
+		// 0= forward 1= behind 2= bellow 
+		this.direction = direction;
 		this.speedX = speedX;
 		this.limit = limit;
 		
@@ -42,7 +46,13 @@ public class Projectile {
 	}
 	
 	public void update(){
-		x += speedX;
+		if(direction == 0)
+			x += speedX;
+		else if(direction == 1)
+			x -= speedX;
+		else if (direction == 2)
+			y += speedX;
+		
 		hitbox.setBounds(x,y, 10, 5);
 		
 		if(x > limit){

@@ -75,7 +75,7 @@ public class Enemy {
 	public void attack(){
 		if(ifAttack == 50){
 			System.out.println("Enemy Fire");
-			Projectile p = new Projectile(centerX + 0, centerY -25);
+			Projectile p = new Projectile(centerX + 0, centerY -25, 2);
 			p.setEnemy(true);
 			projectiles.add(p);
 			ifAttack = 0; 
