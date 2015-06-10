@@ -9,7 +9,7 @@ import java.awt.Rectangle;
 public class Projectile {
 
 	private int x, y, speedX,limit; 
-	private boolean visible;
+	private boolean visible, enemy;
 	private Rectangle hitbox; 
 	
 	public Projectile(){
@@ -56,7 +56,7 @@ public class Projectile {
 	}
 	
 	private void checkCollision(){
-		if(hitbox.intersects(bootloader.getFlyingEmemy().getHitbox())){
+		if(hitbox.intersects(bootloader.getFlyingEmemy().getHitbox()) && !enemy){
 			
 			Enemy en = bootloader.getFlyingEmemy();
 			visible = false;
@@ -111,6 +111,22 @@ public class Projectile {
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+
+	public boolean isEnemy() {
+		return enemy;
+	}
+
+	public void setEnemy(boolean enemy) {
+		this.enemy = enemy;
+	}
+
+	public Rectangle getHitbox() {
+		return hitbox;
+	}
+
+	public void setHitbox(Rectangle hitbox) {
+		this.hitbox = hitbox;
 	}
 
 	@Override

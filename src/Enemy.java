@@ -1,4 +1,5 @@
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 /**Superclass for managing the all enemy characters
  * 
@@ -7,12 +8,15 @@ import java.awt.Rectangle;
  */
 public class Enemy {
 
-	private int maxHealth, currentHealth, power, speedX, centerX, centerY, movementSpeed;
+	private int maxHealth, currentHealth, power, speedX, centerX, centerY, movementSpeed, ifAttack;
+	private ArrayList<Projectile> projectiles;
 	private Background bg;
 	private Rectangle hitbox; 
 	
 	
 	public Enemy(){
+		projectiles = new ArrayList<Projectile>();
+		ifAttack = 0;
 		centerX = 0;
 		centerY = 0;
 		maxHealth = 100; 
@@ -30,6 +34,7 @@ public class Enemy {
 	 */
 	public void update(){
 		follow();
+		attack();
 		centerX += speedX;
 		speedX = bg.getSpeedX()*5;
 		speedX = bg.getSpeedX() * 5 + movementSpeed;
@@ -68,6 +73,14 @@ public class Enemy {
 	}
 	
 	public void attack(){
+		if(ifAttack == 50){
+			System.out.println("Enemy Fire");
+			Projectile p = new Projectile(centerX + 0, centerY -25);
+			p.setEnemy(true);
+			projectiles.add(p);
+			ifAttack = 0; 
+		}
+		ifAttack++;
 		
 	}
 	
@@ -136,6 +149,13 @@ public class Enemy {
 		this.hitbox = hitbox;
 	}
 
+	public ArrayList<Projectile> getProjectiles() {
+		return projectiles;
+	}
+
+	public void setProjectiles(ArrayList<Projectile> projectiles) {
+		this.projectiles = projectiles;
+	}
 
 	@Override
 	public String toString() {

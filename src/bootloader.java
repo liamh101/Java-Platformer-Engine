@@ -170,6 +170,16 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 					}
 				}
 				
+				ArrayList<Projectile> enProjectiles = en1.getProjectiles();
+				for(int i = 0; i < enProjectiles.size(); i++){
+					Projectile p = (Projectile) enProjectiles.get(i);
+					if(p.isVisible() == true){
+						p.update();
+					} else {
+						enProjectiles.remove(i);
+					}
+				}
+				
 				updateTiles();
 				en1.update();
 				bg1.update();
@@ -216,6 +226,13 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 			ArrayList<Projectile> projectiles = player.getProjectiles();
 			for(int i = 0; i < projectiles.size(); i++){
 				Projectile p = (Projectile) projectiles.get(i);
+				g.setColor(Color.YELLOW);
+				g.fillRect(p.getX(), p.getY(), 10, 5);
+			}
+			
+			ArrayList<Projectile> enProjectiles = en1.getProjectiles();
+			for(int i = 0; i < enProjectiles.size(); i++){
+				Projectile p = (Projectile) enProjectiles.get(i);
 				g.setColor(Color.YELLOW);
 				g.fillRect(p.getX(), p.getY(), 10, 5);
 			}
