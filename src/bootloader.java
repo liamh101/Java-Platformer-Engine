@@ -289,7 +289,7 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 		switch(e.getKeyCode()){
 		
 		case KeyEvent.VK_W:
-			System.out.println("Move Up");
+			player.setLookup(true);
 			break;
 			
 		case KeyEvent.VK_S:
@@ -344,7 +344,7 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 		switch(e.getKeyCode()){
 		
 		case KeyEvent.VK_W:
-			System.out.println("Stop moving Up");
+			player.setLookup(false);
 			break;
 			
 		case KeyEvent.VK_S:

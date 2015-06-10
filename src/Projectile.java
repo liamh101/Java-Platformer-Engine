@@ -25,7 +25,7 @@ public class Projectile {
 	public Projectile(int startX, int startY, int direction){
 		x = startX;
 		y = startY;
-		// 0= forward 1= behind 2= bellow 
+		// 0= forward 1= behind 2= bellow 3= above 
 		this.direction = direction;
 		speedX = 7; 
 		limit = 800;
@@ -37,7 +37,7 @@ public class Projectile {
 	public Projectile(int startX, int startY, int direction, int speedX, int limit){
 		x = startX;
 		y = startY; 
-		// 0= forward 1= behind 2= bellow 
+		// 0= forward 1= behind 2= bellow 3= above  
 		this.direction = direction;
 		this.speedX = speedX;
 		this.limit = limit;
@@ -52,6 +52,8 @@ public class Projectile {
 			x -= speedX;
 		else if (direction == 2)
 			y += speedX;
+		else if (direction == 3)
+			y -= speedX;
 		
 		hitbox.setBounds(x,y, 10, 5);
 		

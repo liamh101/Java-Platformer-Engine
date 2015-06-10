@@ -29,7 +29,8 @@ public class Player {
 	private boolean movingLeft;
 	private boolean movingRight;
 	private boolean ducked;
-	private boolean readyToFire = true;
+	private boolean readyToFire;
+	private boolean lookup;
 	
 	private static Background bg1, bg2;
 
@@ -45,7 +46,9 @@ public class Player {
 		jumped = false;
 		movingLeft = false;
 		movingRight = false;
+		lookup = false;
 		ducked = false;
+		readyToFire = true;
 		
 		bottom = new Rectangle(0,0,0,0);
 		head = new Rectangle(0,0,0,0);
@@ -82,10 +85,11 @@ public class Player {
 		rightHand = new Rectangle(0,0,0,0);
 		check = new Rectangle (0,0,0,0);
 		
+		lookup = false;
 		movingLeft = false;
 		movingRight = false;
 		ducked = false;
-		
+		readyToFire = true;
 	}
 	
 	
@@ -228,6 +232,14 @@ public class Player {
 		this.ducked = ducked;
 	}
 	
+	public boolean isLookup() {
+		return lookup;
+	}
+
+	public void setLookup(boolean lookup) {
+		this.lookup = lookup;
+	}
+
 	/**returns background that is first displayed on level load  
 	 * 
 	 * @return background 1
@@ -429,9 +441,19 @@ public class Player {
 	 */
 	public void shoot(){
 		if(readyToFire){
-			Projectile p = new Projectile(centerX + 0, centerY -25, 0);
-			p.setEnemy(false);
-			projectiles.add(p);
+			
+			if(isLookup()){
+				Projectile p = new Projectile(centerX + 0, centerY -25, 3);
+				p.setEnemy(false);
+				projectiles.add(p);
+			}
+				
+			else{ 
+				Projectile p = new Projectile(centerX + 0, centerY -25, 0);
+				p.setEnemy(false);
+				projectiles.add(p);
+			}
+			
 		}
 	}
 	
