@@ -141,6 +141,14 @@ public class Projectile {
 		this.hitbox = hitbox;
 	}
 
+	public int getDirection() {
+		return direction;
+	}
+
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+
 	@Override
 	public String toString() {
 		return "Projectile [x=" + x + ", y=" + y + ", speedX=" + speedX

@@ -227,14 +227,20 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 			for(int i = 0; i < projectiles.size(); i++){
 				Projectile p = (Projectile) projectiles.get(i);
 				g.setColor(Color.YELLOW);
-				g.fillRect(p.getX(), p.getY(), 10, 5);
+				if(p.getDirection() == 0 || p.getDirection() == 1)
+					g.fillRect(p.getX(), p.getY(), 10, 5);
+				else
+					g.fillRect(p.getX(), p.getY(), 5, 10);
 			}
 			
 			ArrayList<Projectile> enProjectiles = en1.getProjectiles();
 			for(int i = 0; i < enProjectiles.size(); i++){
 				Projectile p = (Projectile) enProjectiles.get(i);
 				g.setColor(Color.YELLOW);
-				g.fillRect(p.getX(), p.getY(), 10, 5);
+				if(p.getDirection() == 0 || p.getDirection() == 1)
+					g.fillRect(p.getX(), p.getY(), 10, 5);
+				else
+					g.fillRect(p.getX(), p.getY(), 5, 10);
 			}
 			
 			g.drawImage(currentSprite, player.getCenterX() - 61 , player.getCenterY() - 63, this);
