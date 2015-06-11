@@ -5,7 +5,8 @@
  */
 public class Background {
 	
-	private int bgX, bgY, speedX;
+	private int bgX, bgY;
+	private byte speedX;
 	
 	/**Set Background with the height and width at zero. (showing nothing)
 	 * 
@@ -63,17 +64,17 @@ public class Background {
 
 	/**Return the speed of which the current background is scrolling
 	 * 
-	 * @return speed int of speed
+	 * @return speed byte of speed
 	 */
-	public int getSpeedX() {
+	public byte getSpeedX() {
 		return speedX;
 	}
 	
 	/**Set speed at which the background scrolls
 	 * 
-	 * @param speedX int of speed of the background
+	 * @param speedX byte of speed of the background
 	 */
-	public void setSpeedX(int speedX) {
+	public void setSpeedX(byte speedX) {
 		this.speedX = speedX;
 	}
 	

@@ -309,7 +309,7 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 			currentSprite = characterD;
 			if(player.isJumped() == false){
 				player.setDucked(true);
-				player.setSpeedX(0);
+				player.setSpeedX((byte) 0);
 			}
 			break;
 			

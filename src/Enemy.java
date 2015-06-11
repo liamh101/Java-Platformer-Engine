@@ -8,7 +8,8 @@ import java.util.ArrayList;
  */
 public class Enemy {
 
-	private int maxHealth, currentHealth, power, speedX, centerX, centerY, movementSpeed, ifAttack;
+	private int maxHealth, currentHealth, power, centerX, centerY, ifAttack;
+	private byte speedX, movementSpeed;
 	private ArrayList<Projectile> projectiles;
 	private Background bg;
 	private Rectangle hitbox; 
@@ -36,8 +37,8 @@ public class Enemy {
 		follow();
 		attack();
 		centerX += speedX;
-		speedX = bg.getSpeedX()*5;
-		speedX = bg.getSpeedX() * 5 + movementSpeed;
+		speedX = (byte) (bg.getSpeedX()*5);
+		speedX = (byte) (bg.getSpeedX() * 5 + movementSpeed);
 		hitbox.setBounds(centerX-49 , centerY-49, 64, 64);
 		
 		if(hitbox.intersects(Player.getCheck())){
@@ -107,11 +108,11 @@ public class Enemy {
 		this.power = power;
 	}
 	
-	public int getSpeedX() {
+	public byte getSpeedX() {
 		return speedX;
 	}
 	
-	public void setSpeedX(int speedX) {
+	public void setSpeedX(byte speedX) {
 		this.speedX = speedX;
 	}
 	

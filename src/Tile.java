@@ -4,7 +4,8 @@ import java.awt.Rectangle;
 
 public class Tile {
 
-	private int tileX, tileY, speedX, type, damage;
+	private int tileX, tileY, type, damage;
+	private byte speedX;
 	private Image tileImage;
 	private Player player;
 	private Background bg; 
@@ -50,7 +51,7 @@ public class Tile {
 	 * This is also used for parallax scrolling. 
 	 */
 	public void update() { 
-		speedX = bg.getSpeedX()*5;
+		speedX = (byte) (bg.getSpeedX()*5);
 		tileX += speedX;
 		r.setBounds(tileX, tileY,40,40);
 		
@@ -91,10 +92,10 @@ public class Tile {
 		
 		if(rbot.intersects(r)){
 			player.setJumped(false);
-			player.setSpeedY(0);
+			player.setSpeedY((byte) 0);
 			player.setCenterY(tileY);
 			player.setHealth(player.getHealth() - damage);
-			System.out.println( player.getHealth() - damage);
+
 		}
 	}
 	
@@ -104,7 +105,7 @@ public class Tile {
 			if(rleft.intersects(r)) {
 				System.out.println("in left side intersect");
 				player.setCenterX(tileX + 88);
-				player.setSpeedX(0);
+				player.setSpeedX((byte) 0);
 			}
 		/*	else if (leftFoot.intersects(r)) {
 				System.out.println("in left foot intersect");
@@ -115,7 +116,7 @@ public class Tile {
 			if(rright.intersects(r)) {
 				System.out.println("in right side intersect");
 				player.setCenterX(tileX + 10);
-				player.setSpeedX(0);
+				player.setSpeedX((byte) 0);
 			}
 			
 			/* else if (rightFoot.intersects(r)){

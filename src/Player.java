@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Player {
 
 	//Preset variables
-	final int JUMPSPEED = -15;
-	final int MOVESPEED = 5;
+	final byte JUMPSPEED = -15;
+	final byte MOVESPEED = 5;
 	
 	//Array of projectiles (bullets)
 	private ArrayList<Projectile> projectiles;
@@ -21,8 +21,8 @@ public class Player {
 	//Location and speed variables
 	private int centerX; 
 	private int centerY;
-	private int speedX;
-	private int speedY;
+	private byte speedX;
+	private byte speedY;
 	private int health;
 	
 	//Movement variables
@@ -71,7 +71,7 @@ public class Player {
 	 * @param bg1 first background to display
 	 * @param bg2 second background to display when reached the end of first background.
 	 */
-	public Player(int centerX, int centerY, int speedX, int speedY, int health,  Background bg1, Background bg2){
+	public Player(int centerX, int centerY, byte speedX, byte speedY, int health,  Background bg1, Background bg2){
 		projectiles = new ArrayList<Projectile>();
 		this.centerX = centerX;
 		this.centerY = centerY;
@@ -150,25 +150,25 @@ public class Player {
 
 	/**Set the max speed the character can along the X axis
 	 * 
-	 * @param speedX int max speed of character
+	 * @param speedX byte max speed of character
 	 */
-	public void setSpeedX(int speedX) {
+	public void setSpeedX(byte speedX) {
 		this.speedX = speedX;
 	}
 
 	/**Get max speed character can move along the Y axis
 	 * 
-	 * @return int of max speed
+	 * @return byte of max speed
 	 */
-	public int getSpeedY() {
+	public byte getSpeedY() {
 		return speedY;
 	}
 
 	/**Set max speed character can move along the Y axis 
 	 * 
-	 * @param speedY int of max speed
+	 * @param speedY byte of max speed
 	 */
-	public void setSpeedY(int speedY) {
+	public void setSpeedY(byte speedY) {
 		this.speedY = speedY;
 	}
 
@@ -343,16 +343,16 @@ public class Player {
             centerX += speedX;
         }
         if (speedX == 0 || speedX < 0) {
-            bg1.setSpeedX(0);
-            bg2.setSpeedX(0);
+            bg1.setSpeedX((byte) 0);
+            bg2.setSpeedX((byte) 0);
 
         }
         if (centerX <= 200 && speedX > 0) {
             centerX += speedX;
         }
         if (speedX > 0 && centerX > 200){
-            bg1.setSpeedX(-MOVESPEED/5);
-            bg2.setSpeedX(-MOVESPEED/5);
+            bg1.setSpeedX((byte) (-MOVESPEED/5));
+            bg2.setSpeedX((byte) (-MOVESPEED/5));
         }
 
         // Updates Y Position
