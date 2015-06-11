@@ -23,6 +23,7 @@ public class Player {
 	private int centerY;
 	private int speedX;
 	private int speedY;
+	private int health;
 	
 	//Movement variables
 	private boolean jumped;
@@ -41,6 +42,7 @@ public class Player {
 		projectiles = new ArrayList<Projectile>();
 		centerX = 100;
 		centerY = 440;
+		health = 100;
 		speedX = 0;
 		speedY = 0;
 		jumped = false;
@@ -69,12 +71,13 @@ public class Player {
 	 * @param bg1 first background to display
 	 * @param bg2 second background to display when reached the end of first background.
 	 */
-	public Player(int centerX, int centerY, int speedX, int speedY, Background bg1, Background bg2){
+	public Player(int centerX, int centerY, int speedX, int speedY, int health,  Background bg1, Background bg2){
 		projectiles = new ArrayList<Projectile>();
 		this.centerX = centerX;
 		this.centerY = centerY;
 		this.speedX = speedX;
 		this.speedY = speedY;
+		this.health = health;
 		this.jumped = false;
 		this.bg1 = bg1;
 		this.bg2 = bg2;
@@ -98,6 +101,7 @@ public class Player {
 		centerY = 440;
 		speedX = 0;
 		speedY = 0;
+		health = 100;
 		jumped = false;
 		movingLeft = false;
 		movingRight = false;
@@ -166,6 +170,14 @@ public class Player {
 	 */
 	public void setSpeedY(int speedY) {
 		this.speedY = speedY;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
 	}
 
 	/**is the character jumping?
@@ -324,8 +336,6 @@ public class Player {
 	 * in regards to the character
 	 */
 	public void update(){
-		
-		
 		
 		
 		  // Moves Character or Scrolls Background accordingly.

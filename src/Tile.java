@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 public class Tile {
 
-	private int tileX, tileY, speedX, type;
+	private int tileX, tileY, speedX, type, damage;
 	private Image tileImage;
 	private Player player;
 	private Background bg; 
@@ -27,14 +27,22 @@ public class Tile {
 		
 		r = new Rectangle();
 		
-		if (type == 1)
+		if (type == 1){
 			tileImage = bootloader.getDirtTile();
-		else if (type == 2)
+			damage =0;
+		}
+		else if (type == 2){
 			tileImage = bootloader.getOceanTile();
-		else if (type == 3)
+			damage =0; 
+		}
+		else if (type == 3){
 			tileImage = bootloader.getSpikeTile();
-		else 
+			damage =100;
+		}
+		else {
 			type = 0;
+			damage =0;
+		}
 		
 	}
 	
@@ -85,6 +93,8 @@ public class Tile {
 			player.setJumped(false);
 			player.setSpeedY(0);
 			player.setCenterY(tileY);
+			player.setHealth(player.getHealth() - damage);
+			System.out.println( player.getHealth() - damage);
 		}
 	}
 	

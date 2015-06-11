@@ -151,8 +151,15 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 	public void run() {
 		//Game Loop (currently set at 60fps)
 		
+		
+
+		
 		if(state == GameState.Running){
 			while (true) {
+				if(player.getHealth() <= 0){
+					state = GameState.Dead;
+					System.out.println("Dead");
+				}
 				player.update();
 				if(player.isJumped()){
 					currentSprite = characterJ;
@@ -217,7 +224,7 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 	}
 	
 	public void paint(Graphics g){
-		
+
 		if(state == GameState.Running){
 			g.drawImage(background, bg1.getBgX(), bg1.getBgY(), this);
 			g.drawImage(background, bg2.getBgX(), bg2.getBgY(), this);
