@@ -23,7 +23,7 @@ import framework.Animation;
 public class bootloader extends Applet implements Runnable, KeyListener {
 
 	private Image image, currentSprite, character, character2, character3, characterJ, characterD,flyingEnemy,flyingEnemy2,flyingEnemy3, background;
-	private static Image tiledirt,tileocean,tilespike;
+	private static Image tiledirt,tilegrass,tiledecograss,tileocean,tilespikefloor,tilespikeceiling;
 	private Animation animP, animE;
 	private Graphics second;
 	private URL base;
@@ -74,8 +74,11 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 		flyingEnemy3 = getImage(base, "res/enemy3.png");
 		
 		tiledirt = getImage(base, "res/Tile1.png");
-		tileocean = getImage(base, "res/Tile2.png");
-		tilespike = getImage(base, "res/Spike.png");
+		tilegrass = getImage(base, "res/Tile2.png");
+		tiledecograss = getImage(base, "res/Tile3.png");
+		tileocean = getImage(base, "res/Tile4.png");
+		tilespikefloor = getImage(base, "res/SpikeFloor.png");
+		tilespikeceiling = getImage(base, "res/SpikeCeiling.png");
 		
 		background = getImage(base, "res/background.png");
 		
@@ -406,15 +409,23 @@ public class bootloader extends Applet implements Runnable, KeyListener {
 		return tiledirt;
 	}
 	
+	public static Image getGrassTile(){
+		return tilegrass;
+	}
+	public static Image getDecoGrassTile(){
+		return tiledecograss;
+	}
 	public static Image getOceanTile(){
 		return tileocean;
 	}
 	
-	public static Image getSpikeTile(){
-		return tilespike;
+	public static Image getSpikeTileFloor(){
+		return tilespikefloor;
 	}
-	
-	public static FlyingEnemy getFlyingEmemy(){
+	public static Image getSpikeTileCeiling(){
+		return tilespikeceiling;
+	}
+		public static FlyingEnemy getFlyingEmemy(){
 		return en1;
 	}
 	

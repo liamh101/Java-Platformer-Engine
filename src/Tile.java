@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 public class Tile {
 
-	private int tileX, tileY, type, damage;
+	private int tileX, tileY, type, damage, pass;
 	private byte speedX;
 	private Image tileImage;
 	private Player player;
@@ -30,18 +30,37 @@ public class Tile {
 		
 		if (type == 1){
 			tileImage = bootloader.getDirtTile();
+			pass = 0;
 			damage =0;
 		}
 		else if (type == 2){
-			tileImage = bootloader.getOceanTile();
+			tileImage = bootloader.getGrassTile();
+			pass = 0;
 			damage =0; 
 		}
 		else if (type == 3){
-			tileImage = bootloader.getSpikeTile();
-			damage =100;
+			tileImage = bootloader.getOceanTile();
+			pass = 1;
+			damage = 100;
+		}
+		else if (type == 4){
+			tileImage = bootloader.getSpikeTileFloor();
+			pass = 1;
+			//damage =100;
+		}
+		else if (type == 5){
+			tileImage = bootloader.getSpikeTileCeiling();
+			pass = 0;
+			//damage =100;
+		}
+		else if (type == 9){
+			tileImage = bootloader.getDecoGrassTile();
+			pass = 1;
+			damage = 0;
 		}
 		else {
 			type = 0;
+			pass = 1;
 			damage =0;
 		}
 		
@@ -86,21 +105,22 @@ public class Tile {
 	}
 	
 	public void checkVerticalCollision(Rectangle rbot, Rectangle rtop){
-		if(rtop.intersects(r)){
+		if(pass == 0){		
+			if(rtop.intersects(r)){
 			
-		}
+			}
 		
-		if(rbot.intersects(r)){
-			player.setJumped(false);
-			player.setSpeedY((byte) 0);
-			player.setCenterY(tileY);
-			player.setHealth(player.getHealth() - damage);
+			if(rbot.intersects(r)){
+				player.setJumped(false);
+				player.setSpeedY((byte) 0);
+				player.setCenterY(tileY);
+				player.setHealth(player.getHealth() - damage);
 
+			}
 		}
 	}
-	
 	public void checkSideCollision(Rectangle rleft, Rectangle rright){
-		if(type != 0 ) {
+		if(pass == 0 ) {
 			
 			if(rleft.intersects(r)) {
 				System.out.println("in left side intersect");
